@@ -1,0 +1,57 @@
+# Flutter/Dart specific
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+build/
+android/.gradle/
+android/app/debug.keystore
+
+# iOS specific
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+
+# macOS specific
+macos/Flutter/ephemeral/
+macos/.symlinks/
+macos/Pods/
+
+# Web specific
+web/.dart_tool/
+web/build/
+web/.firebase/
+
+# Windows specific
+windows/flutter/ephemeral/
+
+# Linux specific
+linux/flutter/ephemeral/
+
+# VS Code settings
+.idea/
+*.iml
+
+# Xcode specific
+*.xcworkspace/
+*.xcodeproj/
+*.xcuserstate
+*.xcassets/
+DerivedData/
+
+# IntelliJ IDE settings
+.idea/workspace.xml
+.idea/libraries/
+.idea/modules.xml
+.idea/.name
+*.iml
+
+# Other
+*.log
+*.lock
+*.DS_Store
+*.p12
+*.key
+*.crt

@@ -1,0 +1,2 @@
+C:/Users/pablo/Desktop/SEMESTRE 10/ProgramacionAvanzada/3. Riverpod/3. Riverpod/android/app/.cxx/Debug/3z31132n/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/pablo/Desktop/SEMESTRE 10/ProgramacionAvanzada/3. Riverpod/3. Riverpod/android/app/.cxx/Debug/3z31132n/armeabi-v7a/CMakeFiles/rebuild_cache.dir
