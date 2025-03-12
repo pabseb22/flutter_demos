@@ -31,6 +31,7 @@ class CartNotifier extends Notifier<Set<Product>> {
         }
       }
       state = newState;
+      filterProducts();
     }
   }
 

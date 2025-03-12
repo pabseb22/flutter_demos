@@ -14,9 +14,7 @@ class HomeScreen extends ConsumerWidget {
         .watch(productsProvider.notifier)
         .filteredProducts(); // Leyendo el provider de productos
 
-    final cartProducts = ref
-        .watch(cartNotifierProvider.notifier)
-        .filterProducts(); // Leyendo el provider del carrito
+    final cartProducts = ref.watch(cartNotifierProvider);
 
     var displayCount = ref.watch(switchNotifierProvider); // PAra ocultar todo
 
