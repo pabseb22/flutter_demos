@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_4_bloc_cubit_clima/data/clima_modelo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../logica/clima_cubit.dart';
-import 'pagina_detalles.dart';
 
 class PaginaPresentacion extends StatelessWidget {
   final TextEditingController ciudadControlador = TextEditingController();
@@ -27,9 +26,6 @@ class PaginaPresentacion extends StatelessWidget {
                 final ciudad = ciudadControlador.text.trim();
                 if (ciudad.isNotEmpty) {
                   await context.read<CubitClima>().obtenerClima(ciudad);
-                  if (context.read<CubitClima>().state.error == null) {
-                    context.read<CubitClima>().agregarFavorito(ciudad);
-                  }
                 }
               },
               child: Text('Click para Consultar Clima'),
@@ -42,6 +38,7 @@ class PaginaPresentacion extends StatelessWidget {
                 } else if (state.error != null) {
                   return Text('Error: ${state.error}');
                 } else if (state.ciudad.isNotEmpty) {
+                  final yaEsFavorito = state.favoritos.contains(state.ciudad);
                   return Column(
                     children: [
                       Text('Ciudad: ${state.ciudad}',
@@ -49,15 +46,18 @@ class PaginaPresentacion extends StatelessWidget {
                       Text('Temperatura: ${state.temperatura}°C',
                           style: TextStyle(fontSize: 20)),
                       SizedBox(height: 10),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DetailsPage()),
-                          );
-                        },
-                        child: Text('Mirar Detalles'),
+                      ElevatedButton.icon(
+                        onPressed: yaEsFavorito
+                            ? null
+                            : () => context
+                                .read<CubitClima>()
+                                .agregarFavorito(state.ciudad),
+                        icon: Icon(Icons.favorite),
+                        label: Text('Agregar a Favoritos'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              yaEsFavorito ? Colors.grey : Colors.blue,
+                        ),
                       ),
                     ],
                   );

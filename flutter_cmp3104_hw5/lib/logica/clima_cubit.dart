@@ -1,6 +1,7 @@
 import 'package:flutter_4_bloc_cubit_clima/data/clima_modelo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/clima_repositorio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CubitClima extends Cubit<EstadoClima> {
   final ClimaRepositorio repository;
@@ -36,26 +37,28 @@ class CubitClima extends Cubit<EstadoClima> {
   }
 
   Future<void> agregarFavorito(String ciudad) async {
-    // final prefs = await SharedPreferences.getInstance();
+    final prefs = await SharedPreferences.getInstance();
     final listaActual = List<String>.from(state.favoritos);
+
     if (!listaActual.contains(ciudad)) {
       listaActual.add(ciudad);
-      // await prefs.setStringList('favoritos', listaActual);
+      await prefs.setStringList('favoritos', listaActual);
       emit(state.copiarCon(favoritos: listaActual));
     }
   }
 
   Future<void> eliminarFavorito(String ciudad) async {
-    // final prefs = await SharedPreferences.getInstance();
+    final prefs = await SharedPreferences.getInstance();
     final listaActual = List<String>.from(state.favoritos);
+
     listaActual.remove(ciudad);
-    // await prefs.setStringList('favoritos', listaActual);
+    await prefs.setStringList('favoritos', listaActual);
     emit(state.copiarCon(favoritos: listaActual));
   }
 
   Future<void> cargarFavoritos() async {
-    // final prefs = await SharedPreferences.getInstance();
-    // final favoritos = prefs.getStringList('favoritos') ?? [];
-    // emit(state.copiarCon(favoritos: favoritos));
+    final prefs = await SharedPreferences.getInstance();
+    final favoritos = prefs.getStringList('favoritos') ?? [];
+    emit(state.copiarCon(favoritos: favoritos));
   }
 }
