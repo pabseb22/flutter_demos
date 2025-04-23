@@ -1,0 +1,1 @@
+C:\Users\pablo\OneDrive\Documentos\GitWorkspace\flutter_demos\AlvaradoSarmientoP2\flutter_bottomnavigationbaritem\build\app\intermediates\cxx\Debug\14a5q703\obj\x86_64
